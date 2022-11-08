@@ -19,7 +19,7 @@ func TestAccResourceMongoDBAtlasPrivateLinkEndpointServiceADL_basic(t *testing.T
 		commentUpdate = "this is a comment for adl private link endpoint UPDATED"
 	)
 
-	resource.ParallelTest(t, resource.TestCase{
+	resource.Test(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
 		ProviderFactories: testAccProviderFactories,
 		CheckDestroy:      testAccCheckMongoDBAtlasPrivateLinkEndpointServiceADLDestroy,
@@ -55,7 +55,7 @@ func TestAccResourceMongoDBAtlasPrivateLinkEndpointServiceADL_importBasic(t *tes
 		endpointID    = "vpce-jjg5e24qp93513h03"
 		commentOrigin = "this is a comment for adl private link endpoint"
 	)
-	resource.ParallelTest(t, resource.TestCase{
+	resource.Test(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
 		ProviderFactories: testAccProviderFactories,
 		CheckDestroy:      testAccCheckMongoDBAtlasSearchIndexDestroy,
@@ -102,11 +102,11 @@ func testAccCheckMongoDBAtlasPrivateLinkEndpointServiceADLDestroy(state *terrafo
 func testAccMongoDBAtlasPrivateLinkEndpointServiceADLConfig(projectID, endpointID, comment string) string {
 	return fmt.Sprintf(`
 		resource "mongodbatlas_privatelink_endpoint_service_adl" "test" {
-			project_id   = "%[1]s"
-			endpoint_id  = "%[2]s"
-			comment      = "%[3]s"
-			type		 = "DATA_LAKE"
-			provider_name	 = "AWS"
+			project_id    = "%[1]s"
+			endpoint_id   = "%[2]s"
+			comment       = "%[3]s"
+			type          = "DATA_LAKE"
+			provider_name = "AWS"
 		}
 	`, projectID, endpointID, comment)
 }
